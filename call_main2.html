@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="style.css">
+	<meta charset="utf-8">
+	<title>회사생활 꿀팁</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+	<style type="text/css">
+		html{font-family: 'Noto Sans KR', sans-serif; scroll-behavior: smooth;}
+		body,h1,section{margin: 0px;}
+		body{background: black; padding-left: 2.6vw; padding-top: 1.5vw; padding-bottom: 25px;}
+		h1{color: white;
+			font-weight: 500;
+			font-size: 5.5vw;
+			line-height: 7vw;
+			width: 50vw;
+			margin-right: 0px;
+		}
+		p{color: white; font-weight: 400; font-size: 1.5vw; margin-left: 5vw; display: inline;}
+		#send{color: #1C87FF; font-weight: 400; font-size: 1.5vw; float: right; margin: 0px;}
+		button{height: 4vw; background-color: transparent; color: white; font-size: 1.5vw; border-radius: 2vw; padding-left: 2vw; padding-right: 2vw; margin-right: 1vw; border: 1px solid white;}
+		button:hover{cursor: pointer; background-color: #1C87FF; transition: 0.3s; border: 1px solid #1C87FF;}
+		hr{width: 49.75vw; margin-left: 2.5vw; margin-bottom: 1.5vw;}
+        .clicked {background-color: #1C87FF; transition: 0.3s; border: 1px solid #1C87FF;}
+		.active{background-color: #1C87FF; transition: 0.3s; border: 1px solid #1C87FF;}
+		.row{position: relative;}
+		.vl {border-left: 1px solid white; height: 721px; position: absolute; left: 50vw; top: 0;}
+		.container{display: flex; height: 37.5vw; /*background: lightblue;*/}
+		.title{/*background: yellow;*/ width: 45vw;}
+		.contents{/*background: red;*/ width: 50vw; margin: 0px;}
+		.row{position: relative;}
+		#tel{position: absolute;  width: 45vw; top: 0vw; left: 40vw;}
+		.vl {border-left: 1px solid white; height: 721px; position: absolute; left: 50vw; top: 0;}
+		.button{width: 50vw; height: 4vw;}
+		#back_btn{width: 2.7vw;}
+		#back_btn:hover{cursor: pointer; filter: brightness(60%); transition: 0.3s;}
+		#file{width: 30vw; display: block; margin: auto; margin-top: 4.5vw; margin-bottom: 3vw;}
+		#profile{height: 3vw; margin-right: 10vw; margin-left: 5vw;}
+		#chat1{height: 5vw; margin-top: 13vw; margin-right: 10vw; margin-left: 5vw;}
+		#chat2{height: 5vw; margin-top: 1.5vw; float: right; margin-left: 40vw;}
+		#chat3{height: 5vw; margin-top: 1.5vw; float: right; margin-left: 40vw; margin-bottom: 2vw;}
+		
+	</style>
+</head>
+<body>
+	<div class="vl"></div>
+	<nav>
+		<a href="index.html" id="main">
+			<img src="./img/back_button.png" id="back_btn">
+		</a>
+	</nav>
+
+	<div class="container">
+		<div class="title" id="text">
+			<h1>업무 전화를<br>받아보자</h1>
+		</div>
+		<div class="contents">
+			<div id="c1" style = "display: none">
+				<img src="./img/profile_a.png" id="profile">
+				<img src="./img/telele.png" id="chat1">
+				<img src="./img/answer_a.png" id="chat2">
+				<img src="./img/answer_b.png" id="chat3">
+				<hr>
+				<p>간단한 인사와 함께 소속과 신분을 밝힙니다.</p>
+				<p id="send">보내기</p>
+			</div>
+			<div id="c2" style = "display: none">
+				<img src="./img/profile_b.png" id="profile">
+				<img src="./img/telele.png" id="chat1">
+				<img src="./img/answer_c.png" id="chat2">
+				<img src="./img/answer_d.png" id="chat3">
+				<hr>
+				<p>네(X), 네 과장님~(O)</p>
+				<p id="send">보내기</p>
+			</div>
+			<div id="c3" style = "display: none">
+				<img src="./img/profile_c.png" id="profile">
+				<img src="./img/blabla.png" id="chat1">
+				<img src="./img/answer_e.png" id="chat2">
+				<img src="./img/answer_e.png" id="chat3">
+				<hr>
+				<p>잘 좀 부탁드린다고 12번쯤 말합니다.</p>
+				<p id="send">보내기</p>
+			</div>
+		</div>
+	</div>
+	<section>
+		<div class="low">
+			<img src="./img/tel.png" id="tel">
+		</div>
+	</section>
+	<section class="button">
+		<button id="btn1" onclick="myFunction(this.id)">외부 전화</button>
+		<button id="btn2" onclick="myFunction(this.id)">내부 전화</button>
+		<button id="btn3" onclick="myFunction(this.id)">독촉 전화</button>
+	</section>
+
+	<script type="text/javascript">
+
+		var my_btn = [];
+		init();
+
+		function init() // 초기화 
+		{
+			my_btn.push(document.getElementById("btn1"));
+			my_btn.push(document.getElementById("btn2"));
+			my_btn.push(document.getElementById("btn3"));
+
+			console.log(my_btn)
+			my_btn[0].addEventListener("click", handleClick); // 각 버튼이 눌렸을 때 모두 handleClick이라는 함수를 호출하도록 설정
+			my_btn[1].addEventListener("click", handleClick); // 각 버튼 모두 설정 해줘야 해요
+			my_btn[2].addEventListener("click", handleClick); // 각 버튼 모두 설정 해줘야 해요
+		}
+
+		function handleClick(event) {
+
+			if (event.target.classList[0] === "clicked")  // 클
+			{
+			event.target.classList.remove("clicked");
+			} 
+			else 
+			{
+			for (var i = 0; i < my_btn.length; i++) 
+			{
+				my_btn[i].classList.remove("clicked");
+			}
+
+			event.target.classList.add("clicked");
+			}
+		}
+
+		// btn1.onclick = function(){
+		// 			chat1[0].style.animation = "fadein 2s forwards";
+		// 			chat2[0].style.animation = "fadein 2s forwards 1s";
+		// 			chat3[0].style.animation = "fadein 2s forwards 2s";
+		// 			}
+
+	    function myFunction(clicked_id)
+	    {
+	        const div1 = document.getElementById("c1");
+	        const div2 = document.getElementById("c2");
+	        const div3 = document.getElementById("c3");
+
+	        const div_tel = document.getElementById("tel");
+
+	        if (clicked_id == "btn1") // 함수를 호출한 친구 id가 btn1이면 
+	        {
+	            if (div1.style.display == 'none') // 기존에 페이지에 콘텐츠1이 없었다면
+	            {	
+	                div_tel.style.display = 'none'
+	                div1.style.display = 'block';
+	                div2.style.display = 'none';
+	                div3.style.display = 'none';
+					chat1[0].classList.add("fade-in1");
+					chat2[0].classList.add("fade-in2");
+					chat3[0].classList.add("fade-in3");
+	            }
+	            else                              // 기존 페이지가 콘텐츠 1 일 때 다시 1번 버튼이 눌린 상태 (콘텐츠는 모두 없애고 id카드만 보여야함)
+	            {
+	                div_tel.style.display = 'block'
+	                div1.style.display = 'none';
+	                div2.style.display = 'none';
+	                div3.style.display = 'none';
+	            }
+	        }
+	        if (clicked_id == "btn2")
+	        {
+	            if (div2.style.display == 'none') // 기존에 페이지에 콘텐츠2가 없었다면
+	            {
+	                div_tel.style.display = 'none'
+	                div1.style.display = 'none';
+	                div2.style.display = 'block';
+	                div3.style.display = 'none';
+					chat1[1].classList.add("fade-in1");
+					chat2[1].classList.add("fade-in2");
+					chat3[1].classList.add("fade-in3");
+	            }
+	            else                              // 기존 페이지가 콘텐츠 2 일 때 다시 2번 버튼이 눌린 상태 (콘텐츠는 모두 없애고 id카드만 보여야함)
+	            {
+	                div_tel.style.display = 'block'
+	                div1.style.display = 'none';
+	                div2.style.display = 'none';
+	                div3.style.display = 'none';
+	            }
+	        }
+	        if (clicked_id == "btn3")
+	        {
+	            if (div3.style.display == 'none')
+	            {
+	                div_tel.style.display = 'none'
+	                div1.style.display = 'none';
+	                div2.style.display = 'none';
+	                div3.style.display = 'block';
+	                chat1[2].classList.add("fade-in1");
+					chat2[2].classList.add("fade-in2");
+					chat3[2].classList.add("fade-in3");
+	            }
+	            else
+	            {
+	                div_tel.style.display = 'block'
+	                div1.style.display = 'none';
+	                div2.style.display = 'none';
+	                div3.style.display = 'none';
+	            }
+	        }
+	    }
+
+	</script>
+
+</body>
+</html>

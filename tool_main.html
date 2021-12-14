@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>회사생활 꿀팁</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+	<style type="text/css">
+		html{font-family: 'Noto Sans KR', sans-serif; scroll-behavior: smooth;}
+		body,h1,section{margin: 0px;}
+		body{background: black; padding-left: 2.6vw; padding-top: 1.5vw; padding-bottom: 25px;}
+		h1{color: white;
+			font-weight: 500;
+			font-size: 5.5vw;
+			line-height: 7vw;
+			width: 50vw;
+			margin-right: 0px;
+		}
+		p{color: white; font-weight: 400; font-size: 1vw; text-align: center;}
+		button{height: 4vw; background-color: transparent; color: white; font-size: 1.5vw; border-radius: 2vw; padding-left: 2vw; padding-right: 2vw; margin-right: 1vw; border: 1px solid white;}
+		button:hover{cursor: pointer; background-color: #1C87FF; transition: 0.3s; border: 1px solid #1C87FF;}
+        .clicked {background-color: #1C87FF; transition: 0.3s; border: 1px solid #1C87FF;}
+		.active{background-color: #1C87FF; transition: 0.3s; border: 1px solid #1C87FF;}
+		.row{position: relative;}
+		.vl {border-left: 1px solid white; height: 721px; position: absolute; left: 50vw; top: 0;}
+		.container{display: flex; height: 37.5vw; /*background: lightblue;*/}
+		.title{/*background: yellow;*/ width: 50vw;}
+		.contents{/*background: red;*/ width: 45vw; margin: 0px;}
+		.row{position: relative;}
+		#tool{position: absolute;  width: 60vw; top: 10vw; left: 32vw;}
+		.vl {border-left: 1px solid white; height: 721px; position: absolute; left: 50vw; top: 0;}
+		.button{width: 50vw; height: 4vw;}
+		#back_btn{width: 2.7vw;}
+		#back_btn:hover{cursor: pointer; filter: brightness(60%); transition: 0.3s;}
+		#blueberry{width: 30vw; display: block; margin: auto; margin-top: 4.5vw; margin-bottom: 3vw;}
+		#calendar{height: 28vw; margin-top: 5vw; margin-bottom: 2vw; margin-left: 3vw;}
+	</style>
+</head>
+<body>
+	<div class="vl"></div>
+	<nav>
+		<a href="index.html" id="main">
+			<img src="./img/back_button.png" id="back_btn">
+		</a>
+	</nav>
+
+	<div class="container">
+		<div class="title" id="text">
+			<h1>툴을 다룰 수<br>있냐고 물어본다.</h1>
+		</div>
+		<div class="contents">
+			<div id="c1" style = "display: none">
+				<img src="./img/calendar.png" id="calendar">
+				<p>이번 주말 약속을 취소합니다.</p>
+			</div>
+			<div id="c2" style = "display: none">
+				<img src="./img/blueberry.png" id="blueberry">
+				<p>눈이 벌게질 수 있으니 시신경 보호를 위해<br>안토시아닌이 풍부한 블루베리 주스를 마십시다.</p>
+			</div>
+			<div id="c3" style = "display: none">
+				<p>contents3<p>
+			</div>
+		</div>
+	</div>
+	<section>
+		<div class="low">
+			<img src="./img/tool.png" id="tool">
+		</div>
+	</section>
+	<section class="button">
+		<button id="btn1" onclick="myFunction(this.id)">포토샵</button>
+		<button id="btn2" onclick="myFunction(this.id)">엑셀</button>
+	</section>
+
+	<script type="text/javascript">
+
+				var my_btn = [];
+		        init();
+
+		        function init() // 초기화 
+		        {
+		            my_btn.push(document.getElementById("btn1"));
+		            my_btn.push(document.getElementById("btn2"));
+
+		            console.log(my_btn)
+		            my_btn[0].addEventListener("click", handleClick); // 각 버튼이 눌렸을 때 모두 handleClick이라는 함수를 호출하도록 설정
+		            my_btn[1].addEventListener("click", handleClick); // 각 버튼 모두 설정 해줘야 해요
+		            my_btn[2].addEventListener("click", handleClick); // 각 버튼 모두 설정 해줘야 해요
+		        }
+
+		        function handleClick(event) {
+
+		        if (event.target.classList[0] === "clicked")  // 클
+		        {
+		          event.target.classList.remove("clicked");
+		        } 
+		        else 
+		        {
+		          for (var i = 0; i < my_btn.length; i++) 
+		          {
+		            my_btn[i].classList.remove("clicked");
+		          }
+
+		          event.target.classList.add("clicked");
+		        }
+		      }
+
+
+	    function myFunction(clicked_id)
+	    {
+	        const div1 = document.getElementById("c1");
+	        const div2 = document.getElementById("c2");
+	        const div3 = document.getElementById("c3");
+
+	        const div_tool = document.getElementById("tool");
+
+	        if (clicked_id == "btn1") // 함수를 호출한 친구 id가 btn1이면 
+	        {
+	            if (div1.style.display == 'none') // 기존에 페이지에 콘텐츠1이 없었다면
+	            {
+	                div_tool.style.display = 'none'
+	                div1.style.display = 'block';
+	                div2.style.display = 'none';
+	                div3.style.display = 'none';
+	            }
+	            else                              // 기존 페이지가 콘텐츠 1 일 때 다시 1번 버튼이 눌린 상태 (콘텐츠는 모두 없애고 id카드만 보여야함)
+	            {
+	                div_tool.style.display = 'block'
+	                div1.style.display = 'none';
+	                div2.style.display = 'none';
+	                div3.style.display = 'none';
+	            }
+	        }
+	        if (clicked_id == "btn2")
+	        {
+	            if (div2.style.display == 'none') // 기존에 페이지에 콘텐츠2가 없었다면
+	            {
+	                div_tool.style.display = 'none'
+	                div1.style.display = 'none';
+	                div2.style.display = 'block';
+	                div3.style.display = 'none';
+	            }
+	            else                              // 기존 페이지가 콘텐츠 2 일 때 다시 2번 버튼이 눌린 상태 (콘텐츠는 모두 없애고 id카드만 보여야함)
+	            {
+	                div_tool.style.display = 'block'
+	                div1.style.display = 'none';
+	                div2.style.display = 'none';
+	                div3.style.display = 'none';
+	            }
+	        }
+	        if (clicked_id == "btn3")
+	        {
+	            if (div3.style.display == 'none')
+	            {
+	                div_tool.style.display = 'none'
+	                div1.style.display = 'none';
+	                div2.style.display = 'none';
+	                div3.style.display = 'block';
+	            }
+	            else
+	            {
+	                div_tool.style.display = 'block'
+	                div1.style.display = 'none';
+	                div2.style.display = 'none';
+	                div3.style.display = 'none';
+	            }
+	        }
+	    }
+	</script>
+</body>
+</html>
